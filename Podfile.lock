@@ -1,0 +1,18 @@
+PODS:
+  - MOLCertificate (1.5)
+  - MOLCodesignChecker (1.5):
+    - MOLCertificate (~> 1.3)
+  - OCMock (3.4)
+
+DEPENDENCIES:
+  - MOLCodesignChecker
+  - OCMock
+
+SPEC CHECKSUMS:
+  MOLCertificate: c39cae866d24d36fbc78032affff83d401b5384a
+  MOLCodesignChecker: fc9c64147811d7b0d0739127003e0630dff9213a
+  OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
+
+PODFILE CHECKSUM: a4ffc6ae7379e3cf6ccaa45702da66fc9527ae30
+
+COCOAPODS: 1.2.1
