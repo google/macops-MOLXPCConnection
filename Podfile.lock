@@ -1,7 +1,7 @@
 PODS:
-  - MOLCertificate (1.5)
-  - MOLCodesignChecker (1.5):
-    - MOLCertificate (~> 1.3)
+  - MOLCertificate (1.6)
+  - MOLCodesignChecker (1.6):
+    - MOLCertificate (~> 1.6)
   - OCMock (3.4)
 
 DEPENDENCIES:
@@ -9,8 +9,8 @@ DEPENDENCIES:
   - OCMock
 
 SPEC CHECKSUMS:
-  MOLCertificate: c39cae866d24d36fbc78032affff83d401b5384a
-  MOLCodesignChecker: fc9c64147811d7b0d0739127003e0630dff9213a
+  MOLCertificate: 1998f223393662c52c5e877126e01e7a0b68b889
+  MOLCodesignChecker: ff81b18f313acecd0f7cc9d376573ca9a7c0f1d1
   OCMock: 35ae71d6a8fcc1b59434d561d1520b9dd4f15765
 
 PODFILE CHECKSUM: a4ffc6ae7379e3cf6ccaa45702da66fc9527ae30
