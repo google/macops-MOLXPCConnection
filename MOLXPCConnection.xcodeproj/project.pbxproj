@@ -192,7 +192,6 @@
 				TargetAttributes = {
 					C75BA7E11F66E6CE00E67A35 = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Manual;
 					};
 					C75BA7F11F66E79300E67A35 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -369,7 +368,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -424,7 +422,6 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -447,7 +444,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E68BFF9D440292A662549B35 /* Pods-MOLXPCConnection.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -461,7 +457,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8CF3E5116523EF3C534DBEC /* Pods-MOLXPCConnection.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -475,7 +470,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A56B1113610DAE6D5912FC62 /* Pods-MOLXPCConnectionTests.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -490,7 +484,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37180BCCC605A6084325CA7C /* Pods-MOLXPCConnectionTests.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tests/Info.plist;
