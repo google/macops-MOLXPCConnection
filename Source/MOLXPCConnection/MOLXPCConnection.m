@@ -14,13 +14,13 @@
 
 #import "MOLXPCConnection.h"
 
-#import "MOLCodesignChecker.h"
+#import <MOLCodesignChecker/MOLCodesignChecker.h>
 
 /**
  Protocol used during connection establishment, @see MOLXPCConnectionInterface
  */
 @protocol MOLXPCConnectionProtocol
-- (void)connectWithReply:(void (^)())reply;
+- (void)connectWithReply:(void (^)(void))reply;
 @end
 
 /**
@@ -36,7 +36,7 @@
 @end
 
 @implementation MOLXPCConnectionInterface
-- (void)connectWithReply:(void (^)())reply {
+- (void)connectWithReply:(void (^)(void))reply {
   if (self.block) self.block();
   reply();
 }

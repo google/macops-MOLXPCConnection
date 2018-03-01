@@ -16,8 +16,8 @@
 
 #import <OCMock/OCMock.h>
 
-#import "MOLCodesignChecker.h"
-#import "MOLXPCConnection.h"
+#import <MOLCodesignChecker/MOLCodesignChecker.h>
+#import <MOLXPCConnection/MOLXPCConnection.h>
 
 @interface MOLXPCConnectionTest : XCTestCase
 @end

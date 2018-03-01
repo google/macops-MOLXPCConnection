@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		357646E8A42865D0A8094329 /* libPods-MOLXPCConnectionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B640C705D68DCDF2DC9487C8 /* libPods-MOLXPCConnectionTests.a */; };
 		53C1B87F1AB3238433B9D364 /* libPods-MOLXPCConnection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 475A1EE68A70025F81345AC8 /* libPods-MOLXPCConnection.a */; };
-		C75BA7E61F66E6CE00E67A35 /* MOLXPCConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = C75BA7E51F66E6CE00E67A35 /* MOLXPCConnection.h */; };
-		C75BA7E81F66E6CE00E67A35 /* MOLXPCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C75BA7E71F66E6CE00E67A35 /* MOLXPCConnection.m */; };
-		C75BA7F51F66E79300E67A35 /* MOLXPCConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C75BA7F41F66E79300E67A35 /* MOLXPCConnectionTests.m */; };
+		C74701A42048609900895896 /* MOLXPCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = C74701A32048609100895896 /* MOLXPCConnection.m */; };
+		C74701A52048609C00895896 /* MOLXPCConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C747019F2048609100895896 /* MOLXPCConnectionTests.m */; };
+		C74701A62048618800895896 /* MOLXPCConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = C74701A22048609100895896 /* MOLXPCConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C75BA7F71F66E79300E67A35 /* libMOLXPCConnection.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C75BA7E21F66E6CE00E67A35 /* libMOLXPCConnection.dylib */; };
 /* End PBXBuildFile section */
 
@@ -30,12 +30,12 @@
 		475A1EE68A70025F81345AC8 /* libPods-MOLXPCConnection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MOLXPCConnection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56B1113610DAE6D5912FC62 /* Pods-MOLXPCConnectionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOLXPCConnectionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MOLXPCConnectionTests/Pods-MOLXPCConnectionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B640C705D68DCDF2DC9487C8 /* libPods-MOLXPCConnectionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MOLXPCConnectionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C747019E2048609100895896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C747019F2048609100895896 /* MOLXPCConnectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOLXPCConnectionTests.m; sourceTree = "<group>"; };
+		C74701A22048609100895896 /* MOLXPCConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOLXPCConnection.h; sourceTree = "<group>"; };
+		C74701A32048609100895896 /* MOLXPCConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOLXPCConnection.m; sourceTree = "<group>"; };
 		C75BA7E21F66E6CE00E67A35 /* libMOLXPCConnection.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libMOLXPCConnection.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		C75BA7E51F66E6CE00E67A35 /* MOLXPCConnection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOLXPCConnection.h; sourceTree = "<group>"; };
-		C75BA7E71F66E6CE00E67A35 /* MOLXPCConnection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOLXPCConnection.m; sourceTree = "<group>"; };
 		C75BA7F21F66E79300E67A35 /* MOLXPCConnectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MOLXPCConnectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C75BA7F41F66E79300E67A35 /* MOLXPCConnectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MOLXPCConnectionTests.m; sourceTree = "<group>"; };
-		C75BA7F61F66E79300E67A35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E68BFF9D440292A662549B35 /* Pods-MOLXPCConnection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOLXPCConnection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MOLXPCConnection/Pods-MOLXPCConnection.debug.xcconfig"; sourceTree = "<group>"; };
 		E8CF3E5116523EF3C534DBEC /* Pods-MOLXPCConnection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MOLXPCConnection.release.xcconfig"; path = "Pods/Target Support Files/Pods-MOLXPCConnection/Pods-MOLXPCConnection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,11 +70,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C747019D2048609100895896 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C747019E2048609100895896 /* Info.plist */,
+				C747019F2048609100895896 /* MOLXPCConnectionTests.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		C74701A02048609100895896 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C74701A12048609100895896 /* MOLXPCConnection */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		C74701A12048609100895896 /* MOLXPCConnection */ = {
+			isa = PBXGroup;
+			children = (
+				C74701A22048609100895896 /* MOLXPCConnection.h */,
+				C74701A32048609100895896 /* MOLXPCConnection.m */,
+			);
+			path = MOLXPCConnection;
+			sourceTree = "<group>";
+		};
 		C75BA7D91F66E6CE00E67A35 = {
 			isa = PBXGroup;
 			children = (
-				C75BA7E41F66E6CE00E67A35 /* MOLXPCConnection */,
-				C75BA7F31F66E79300E67A35 /* MOLXPCConnectionTests */,
+				C74701A02048609100895896 /* Source */,
+				C747019D2048609100895896 /* Tests */,
 				C75BA7E31F66E6CE00E67A35 /* Products */,
 				D239261EDF80376517731D50 /* Pods */,
 				7FF03CCEF2A226FE2771685F /* Frameworks */,
@@ -88,24 +114,6 @@
 				C75BA7F21F66E79300E67A35 /* MOLXPCConnectionTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C75BA7E41F66E6CE00E67A35 /* MOLXPCConnection */ = {
-			isa = PBXGroup;
-			children = (
-				C75BA7E51F66E6CE00E67A35 /* MOLXPCConnection.h */,
-				C75BA7E71F66E6CE00E67A35 /* MOLXPCConnection.m */,
-			);
-			path = MOLXPCConnection;
-			sourceTree = "<group>";
-		};
-		C75BA7F31F66E79300E67A35 /* MOLXPCConnectionTests */ = {
-			isa = PBXGroup;
-			children = (
-				C75BA7F41F66E79300E67A35 /* MOLXPCConnectionTests.m */,
-				C75BA7F61F66E79300E67A35 /* Info.plist */,
-			);
-			path = MOLXPCConnectionTests;
 			sourceTree = "<group>";
 		};
 		D239261EDF80376517731D50 /* Pods */ = {
@@ -126,7 +134,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C75BA7E61F66E6CE00E67A35 /* MOLXPCConnection.h in Headers */,
+				C74701A62048618800895896 /* MOLXPCConnection.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,16 +187,16 @@
 		C75BA7DA1F66E6CE00E67A35 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Google;
 				TargetAttributes = {
 					C75BA7E11F66E6CE00E67A35 = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					C75BA7F11F66E79300E67A35 = {
 						CreatedOnToolsVersion = 8.3.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -242,13 +250,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MOLXPCConnectionTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		535CF863713CA96A66565003 /* [CP] Check Pods Manifest.lock */ = {
@@ -257,13 +268,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MOLXPCConnection-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		654C6E1213F21D910C734CE2 /* [CP] Embed Pods Frameworks */ = {
@@ -303,7 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C75BA7E81F66E6CE00E67A35 /* MOLXPCConnection.m in Sources */,
+				C74701A42048609900895896 /* MOLXPCConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C75BA7F51F66E79300E67A35 /* MOLXPCConnectionTests.m in Sources */,
+				C74701A52048609C00895896 /* MOLXPCConnectionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +351,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -345,7 +361,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -386,7 +406,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -394,7 +416,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -421,10 +447,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E68BFF9D440292A662549B35 /* Pods-MOLXPCConnection.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -432,10 +461,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8CF3E5116523EF3C534DBEC /* Pods-MOLXPCConnection.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -443,11 +475,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A56B1113610DAE6D5912FC62 /* Pods-MOLXPCConnectionTests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MOLXPCConnectionTests/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.corp.MOLXPCConnectionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -455,11 +490,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37180BCCC605A6084325CA7C /* Pods-MOLXPCConnectionTests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = MOLXPCConnectionTests/Info.plist;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.google.corp.MOLXPCConnectionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
