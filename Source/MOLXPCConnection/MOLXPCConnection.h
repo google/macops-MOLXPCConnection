@@ -22,7 +22,9 @@
 
  @code
  MOLXPCConnection *conn = [[MOLXPCConnection alloc] initServerWithName:@"MyServer"];
- conn.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MyServerProtocol)];
+ conn.privilegedExportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MyPriamryServerProtocol)];
+ conn.unprivilegedExportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MySecondaryServerProtocol)];
+ [conn allowUnprivilegedClients:YES];
  conn.exportedObject = myObject;
  [conn resume];
  @endcode
@@ -95,6 +97,11 @@
 - (void)resume;
 
 /**
+  Enables or disables the connection from unprivileged users. (server)
+*/
+- (void)allowUnprivilegedClients:(BOOL)enable;
+
+/**
  Invalidate the connection(s). This must be done before the object can be released.
  */
 - (void)invalidate;
@@ -113,9 +120,14 @@
 @property(readonly, nonatomic, nullable) id remoteObjectProxy;
 
 /**
- The interface this object exports. (server)
+ The privileged interface this object exports. (server)
  */
-@property(retain, nullable) NSXPCInterface *exportedInterface;
+@property(retain, nullable) NSXPCInterface *privilegedExportedInterface;
+
+/**
+ The unprivileged interface this object exports. (server)
+ */
+@property(retain, nullable) NSXPCInterface *unprivilegedExportedInterface;
 
 /**
  The object that responds to messages from the other end. (server)

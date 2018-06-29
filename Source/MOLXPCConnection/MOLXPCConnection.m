@@ -50,6 +50,9 @@
 
 /// The current connection object (client only).
 @property NSXPCConnection *currentConnection;
+
+/// Whether to allow connections from unprivileged users or not (server only).
+@property BOOL allowUnprivilegedClients;
 @end
 
 @implementation MOLXPCConnection
@@ -59,6 +62,7 @@
 - (instancetype)initServerWithListener:(NSXPCListener *)listener {
   self = [super init];
   if (self) {
+    _allowUnprivilegedClients = YES;
     _listenerObject = listener;
     _validationInterface =
     [NSXPCInterface interfaceWithProtocol:@protocol(MOLXPCConnectionProtocol)];
@@ -150,7 +154,33 @@
   }
 }
 
+- (void)allowUnprivilegedClients:(BOOL)enable {
+  _allowUnprivilegedClients = enable;
+}
+
 - (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)connection {
+  // Fail this connection if it's from an unprivileged user and we have been
+  // configured to only allow root/admins
+  BOOL userIsPrivileged = [connection effectiveUserIdentifier] == 0;
+  if (!userIsPrivileged && !_allowUnprivilegedClients) {
+    return NO;
+  }
+
+  // Get the privileged interface for privileged users, and fallback to unprivileged
+  // if the first interface is not available; do the opposite for unprivileged users
+  NSXPCInterface *preferred_interface;
+  NSXPCInterface *fallback_interface;
+
+  if (userIsPrivileged) {
+    preferred_interface = self.privilegedExportedInterface;
+    fallback_interface = self.unprivilegedExportedInterface;
+  } else {
+    preferred_interface = self.unprivilegedExportedInterface;
+    fallback_interface = self.privilegedExportedInterface;
+  }
+
+  NSXPCInterface *userInterface = (preferred_interface ? preferred_interface : fallback_interface);
+
   pid_t pid = connection.processIdentifier;
   MOLCodesignChecker *otherCS = [[MOLCodesignChecker alloc] initWithPID:pid];
   if (![otherCS signingInformationMatches:[[MOLCodesignChecker alloc] initWithSelf]]) {
@@ -170,7 +200,7 @@
     connection.invalidationHandler = connection.interruptionHandler = ^{
       if (self.invalidationHandler) self.invalidationHandler();
     };
-    connection.exportedInterface = self.exportedInterface;
+    connection.exportedInterface = userInterface;
     connection.exportedObject = self.exportedObject;
     [connection resume];
 
