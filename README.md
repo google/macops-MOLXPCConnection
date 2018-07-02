@@ -1,6 +1,8 @@
 # MOLXPCConnection
 
-A wrapper around NSXPCListener and NSXPCConnection to provide client multiplexing, signature validation of connecting clients and forced connection establishment.
+A wrapper around NSXPCListener and NSXPCConnection to provide client multiplexing,
+signature validation of connecting clients, forced connection establishment and
+different exported interfaces for privileged/unprivileged clients.
 
 ## Installation
 
@@ -16,7 +18,7 @@ Example server started by `launchd` where the `launchd` job has a `MachServices`
 
 ```objc
 MOLXPCConnection *conn = [[MOLXPCConnection alloc] initServerWithName:@"MyServer"];
-conn.exportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MyServerProtocol)];
+conn.privilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MyServerProtocol)];
 conn.exportedObject = myObject;
 [conn resume];
 ```

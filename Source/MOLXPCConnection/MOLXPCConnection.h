@@ -22,8 +22,8 @@
 
  @code
  MOLXPCConnection *conn = [[MOLXPCConnection alloc] initServerWithName:@"MyServer"];
- conn.privilegedExportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MyPriamryServerProtocol)];
- conn.unprivilegedExportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MySecondaryServerProtocol)];
+ conn.privilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MyPriamryServerProtocol)];
+ conn.unprivilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MySecondaryServerProtocol)];
  conn.exportedObject = myObject;
  [conn resume];
  @endcode
@@ -119,13 +119,14 @@
 @property(retain, nullable) NSXPCInterface *privilegedInterface;
 
 /**
- The unprivileged interface this object exports. (server)
+  The unprivileged interface this object exports. (server)
  */
 @property(retain, nullable) NSXPCInterface *unprivilegedInterface;
 
 /**
-  Old interface property, please update to use privilegedExportedInterface and/or unprivilegedExportedInterface instead.
-*/
+  Old interface property, please update to use privilegedExportedInterface and/or
+  unprivilegedExportedInterface instead.
+ */
 @property(retain, nullable) NSXPCInterface *exportedInterface __attribute__((
    deprecated("Use privilegedExportedInterface and / or unprivilegedExportedInterface instead.")));
 
