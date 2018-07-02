@@ -24,7 +24,6 @@
  MOLXPCConnection *conn = [[MOLXPCConnection alloc] initServerWithName:@"MyServer"];
  conn.privilegedExportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MyPriamryServerProtocol)];
  conn.unprivilegedExportedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(MySecondaryServerProtocol)];
- [conn allowUnprivilegedClients:YES];
  conn.exportedObject = myObject;
  [conn resume];
  @endcode
@@ -97,11 +96,6 @@
 - (void)resume;
 
 /**
-  Enables or disables the connection from unprivileged users. (server)
-*/
-- (void)allowUnprivilegedClients:(BOOL)enable;
-
-/**
  Invalidate the connection(s). This must be done before the object can be released.
  */
 - (void)invalidate;
@@ -122,12 +116,18 @@
 /**
  The privileged interface this object exports. (server)
  */
-@property(retain, nullable) NSXPCInterface *privilegedExportedInterface;
+@property(retain, nullable) NSXPCInterface *privilegedInterface;
 
 /**
  The unprivileged interface this object exports. (server)
  */
-@property(retain, nullable) NSXPCInterface *unprivilegedExportedInterface;
+@property(retain, nullable) NSXPCInterface *unprivilegedInterface;
+
+/**
+  Old interface property, please update to use privilegedExportedInterface and/or unprivilegedExportedInterface instead.
+*/
+@property(retain, nullable) NSXPCInterface *exportedInterface __attribute__((
+   deprecated("Use privilegedExportedInterface and / or unprivilegedExportedInterface instead.")));
 
 /**
  The object that responds to messages from the other end. (server)

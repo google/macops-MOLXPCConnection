@@ -50,9 +50,6 @@
 
 /// The current connection object (client only).
 @property NSXPCConnection *currentConnection;
-
-/// Whether to allow connections from unprivileged users or not (server only).
-@property BOOL allowUnprivilegedClients;
 @end
 
 @implementation MOLXPCConnection
@@ -62,7 +59,6 @@
 - (instancetype)initServerWithListener:(NSXPCListener *)listener {
   self = [super init];
   if (self) {
-    _allowUnprivilegedClients = YES;
     _listenerObject = listener;
     _validationInterface =
     [NSXPCInterface interfaceWithProtocol:@protocol(MOLXPCConnectionProtocol)];
@@ -154,32 +150,22 @@
   }
 }
 
-- (void)allowUnprivilegedClients:(BOOL)enable {
-  _allowUnprivilegedClients = enable;
-}
-
 - (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)connection {
   // Fail this connection if it's from an unprivileged user and we have been
   // configured to only allow root/admins
-  BOOL userIsPrivileged = [connection effectiveUserIdentifier] == 0;
-  if (!userIsPrivileged && !_allowUnprivilegedClients) {
-    return NO;
-  }
-
-  // Get the privileged interface for privileged users, and fallback to unprivileged
-  // if the first interface is not available; do the opposite for unprivileged users
-  NSXPCInterface *preferred_interface;
-  NSXPCInterface *fallback_interface;
-
-  if (userIsPrivileged) {
-    preferred_interface = self.privilegedExportedInterface;
-    fallback_interface = self.unprivilegedExportedInterface;
+  NSXPCInterface *interface;
+  if ([connection effectiveUserIdentifier] == 0) {
+    interface = self.privilegedInterface;
   } else {
-    preferred_interface = self.unprivilegedExportedInterface;
-    fallback_interface = self.privilegedExportedInterface;
+    interface = self.unprivilegedInterface;
   }
 
-  NSXPCInterface *userInterface = (preferred_interface ? preferred_interface : fallback_interface);
+  // TODO(any): Remove 1-2 releases after exportedInterface was marked deprecated.
+  if (!interface) {
+    interface = self.exportedInterface;
+  }
+
+  if (!interface) return NO;
 
   pid_t pid = connection.processIdentifier;
   MOLCodesignChecker *otherCS = [[MOLCodesignChecker alloc] initWithPID:pid];
@@ -200,7 +186,7 @@
     connection.invalidationHandler = connection.interruptionHandler = ^{
       if (self.invalidationHandler) self.invalidationHandler();
     };
-    connection.exportedInterface = userInterface;
+    connection.exportedInterface = interface;
     connection.exportedObject = self.exportedObject;
     [connection resume];
 

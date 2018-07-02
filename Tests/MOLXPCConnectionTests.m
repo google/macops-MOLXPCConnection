@@ -22,6 +22,9 @@
 @interface MOLXPCConnectionTest : XCTestCase
 @end
 
+@protocol DummyXPCProtocol
+@end
+
 @implementation MOLXPCConnectionTest
 
 - (void)testPlainInit {
@@ -67,6 +70,7 @@
   NSXPCListener *listener = [NSXPCListener anonymousListener];
 
   MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
+  sutServer.unprivilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyXPCProtocol)];
   [sutServer resume];
 
   __block XCTestExpectation *exp1 = [self expectationWithDescription:@"Client Invalidated"];
@@ -87,6 +91,7 @@
 
   XCTestExpectation *exp1 = [self expectationWithDescription:@"Server Accepted"];
   MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
+  sutServer.unprivilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyXPCProtocol)];
   sutServer.acceptedHandler = ^{
     [exp1 fulfill];
   };
@@ -105,6 +110,7 @@
 - (void)testConnectionInterruption {
   NSXPCListener *listener = [NSXPCListener anonymousListener];
   MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
+  sutServer.unprivilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyXPCProtocol)];
   [sutServer resume];
 
   __block XCTestExpectation *exp1 = [self expectationWithDescription:@"Client Invalidated"];
