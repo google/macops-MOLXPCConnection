@@ -61,7 +61,7 @@
   if (self) {
     _listenerObject = listener;
     _validationInterface =
-    [NSXPCInterface interfaceWithProtocol:@protocol(MOLXPCConnectionProtocol)];
+        [NSXPCInterface interfaceWithProtocol:@protocol(MOLXPCConnectionProtocol)];
   }
   return self;
 }
@@ -154,7 +154,7 @@
   // Fail this connection if it's from an unprivileged user and we have been
   // configured to only allow root/admins
   NSXPCInterface *interface;
-  if ([connection effectiveUserIdentifier] == 0) {
+  if (connection.effectiveUserIdentifier == 0) {
     interface = self.privilegedInterface;
   } else {
     interface = self.unprivilegedInterface;

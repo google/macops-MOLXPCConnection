@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'MOLXPCConnection'
-  s.version      = '1.1'
+  s.version      = '1.2'
   s.platform     = :osx, '10.8'
   s.license      = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.homepage     = 'https://github.com/google/macops-molxpcconnection'
