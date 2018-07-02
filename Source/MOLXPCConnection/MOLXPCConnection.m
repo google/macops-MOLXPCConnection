@@ -151,6 +151,22 @@
 }
 
 - (BOOL)listener:(NSXPCListener *)listener shouldAcceptNewConnection:(NSXPCConnection *)connection {
+  // Fail this connection if it's from an unprivileged user and we have been
+  // configured to only allow root/admins
+  NSXPCInterface *interface;
+  if ([connection effectiveUserIdentifier] == 0) {
+    interface = self.privilegedInterface;
+  } else {
+    interface = self.unprivilegedInterface;
+  }
+
+  // TODO(any): Remove 1-2 releases after exportedInterface was marked deprecated.
+  if (!interface) {
+    interface = self.exportedInterface;
+  }
+
+  if (!interface) return NO;
+
   pid_t pid = connection.processIdentifier;
   MOLCodesignChecker *otherCS = [[MOLCodesignChecker alloc] initWithPID:pid];
   if (![otherCS signingInformationMatches:[[MOLCodesignChecker alloc] initWithSelf]]) {
@@ -170,7 +186,7 @@
     connection.invalidationHandler = connection.interruptionHandler = ^{
       if (self.invalidationHandler) self.invalidationHandler();
     };
-    connection.exportedInterface = self.exportedInterface;
+    connection.exportedInterface = interface;
     connection.exportedObject = self.exportedObject;
     [connection resume];
 
