@@ -19,13 +19,32 @@
 #import <MOLCodesignChecker/MOLCodesignChecker.h>
 #import <MOLXPCConnection/MOLXPCConnection.h>
 
+@protocol DeepThoughtProtocol
+- (void)theAnswerToLifeTheUniverseAndEverything:(void(^)(int))reply;
+@end
+
+@interface DeepThought : NSObject<DeepThoughtProtocol>
+@end
+
+@implementation DeepThought
+- (void)theAnswerToLifeTheUniverseAndEverything:(void(^)(int))reply {
+  reply(42);
+}
+@end
+
 @interface MOLXPCConnectionTest : XCTestCase
 @end
 
-@protocol DummyXPCProtocol
-@end
-
 @implementation MOLXPCConnectionTest
+
+- (NSXPCInterface *)deepThoughtInterface {
+  static NSXPCInterface *interface;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    interface = [NSXPCInterface interfaceWithProtocol:@protocol(DeepThoughtProtocol)];
+  });
+  return interface;
+}
 
 - (void)testPlainInit {
   XCTAssertThrows([[MOLXPCConnection alloc] init]);
@@ -70,7 +89,7 @@
   NSXPCListener *listener = [NSXPCListener anonymousListener];
 
   MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
-  sutServer.unprivilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyXPCProtocol)];
+  sutServer.unprivilegedInterface = [self deepThoughtInterface];
   [sutServer resume];
 
   __block XCTestExpectation *exp1 = [self expectationWithDescription:@"Client Invalidated"];
@@ -91,7 +110,7 @@
 
   XCTestExpectation *exp1 = [self expectationWithDescription:@"Server Accepted"];
   MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
-  sutServer.unprivilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyXPCProtocol)];
+  sutServer.unprivilegedInterface = [self deepThoughtInterface];
   sutServer.acceptedHandler = ^{
     [exp1 fulfill];
   };
@@ -110,7 +129,7 @@
 - (void)testConnectionInterruption {
   NSXPCListener *listener = [NSXPCListener anonymousListener];
   MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
-  sutServer.unprivilegedInterface = [NSXPCInterface interfaceWithProtocol:@protocol(DummyXPCProtocol)];
+  sutServer.unprivilegedInterface = [self deepThoughtInterface];
   [sutServer resume];
 
   __block XCTestExpectation *exp1 = [self expectationWithDescription:@"Client Invalidated"];
@@ -125,6 +144,23 @@
   sutServer = nil;
   
   [self waitForExpectationsWithTimeout:1.0 handler:NULL];
+}
+
+- (void)testSynchronous {
+  NSXPCListener *listener = [NSXPCListener anonymousListener];
+  MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
+  sutServer.unprivilegedInterface = [self deepThoughtInterface];
+  sutServer.exportedObject = [[DeepThought alloc] init];
+  [sutServer resume];
+
+  __block int answer = 0;
+  MOLXPCConnection *sutClient = [[MOLXPCConnection alloc] initClientWithListener:listener.endpoint];
+  sutClient.remoteInterface = [self deepThoughtInterface];
+  [sutClient resume];
+  [[sutClient synchronousRemoteObjectProxy] theAnswerToLifeTheUniverseAndEverything:^(int reply) {
+    answer = reply;
+  }];
+  XCTAssertEqual(answer, 42);
 }
 
 @end

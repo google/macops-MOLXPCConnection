@@ -162,7 +162,10 @@
 
   // TODO(any): Remove 1-2 releases after exportedInterface was marked deprecated.
   if (!interface) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     interface = self.exportedInterface;
+#pragma clang diagnostic pop
   }
 
   if (!interface) return NO;
@@ -200,14 +203,22 @@
   return YES;
 }
 
-- (id)remoteObjectProxy {
+- (id)remoteObjectProxyWantSynchronous:(BOOL)synchronous {
   if (self.currentConnection.remoteObjectInterface &&
       self.currentConnection.remoteObjectInterface != self.validationInterface) {
-    return [self.currentConnection remoteObjectProxyWithErrorHandler:^(NSError *error) {
-      [self.currentConnection invalidate];
-    }];
+    void (^handler)(NSError *) = ^void(NSError *error) { [self.currentConnection invalidate]; };
+    if (!synchronous) return [self.currentConnection remoteObjectProxyWithErrorHandler:handler];
+    return [self.currentConnection synchronousRemoteObjectProxyWithErrorHandler:handler];
   }
   return nil;
+}
+
+- (id)remoteObjectProxy {
+  return [self remoteObjectProxyWantSynchronous:NO];
+}
+
+- (id)synchronousRemoteObjectProxy {
+ return [self remoteObjectProxyWantSynchronous:YES];
 }
 
 #pragma mark Connection tear-down
