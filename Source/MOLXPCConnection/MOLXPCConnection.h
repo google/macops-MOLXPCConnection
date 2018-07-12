@@ -128,7 +128,7 @@
   unprivilegedExportedInterface instead.
  */
 @property(retain, nullable) NSXPCInterface *exportedInterface __attribute__((
-   deprecated("Use privilegedExportedInterface and / or unprivilegedExportedInterface instead.")));
+   deprecated("Use privilegedInterface and / or unprivilegedInterface instead.")));
 
 /**
  The object that responds to messages from the other end. (server)
