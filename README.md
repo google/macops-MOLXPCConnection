@@ -6,11 +6,52 @@ different exported interfaces for privileged/unprivileged clients.
 
 ## Installation
 
-Install using CocoaPods.
+#### Using CocoaPods
+
+Add the following line to your Podfile:
 
 ```
-pod 'MOLXPCConnection'
+pod 'MOLCodesignChecker'
 ```
+
+#### Using [Bazel](http://bazel.build)
+
+Add the following to your WORKSPACE:
+
+```
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+# Needed for MOLXPConnection
+git_repository(
+    name = "MOLCertificate",
+    remote = "https://github.com/google/macops-molcertificate.git",
+    tag = "v2.0",
+)
+
+# Needed for MOLXPCConnection
+git_repository(
+    name = "MOLCodesignChecker",
+    remote = "https://github.com/google/macops-molcodesignchecker.git",
+    tag = "v2.0",
+)
+
+git_repository(
+    name = "MOLXPCConnection",
+    remote = "https://github.com/google/macops-molxpcconnection.git",
+    tag = "v2.0",
+)
+```
+
+And in your BUILD file, add MOLXPCConnection as a dependency:
+
+<pre>
+objc_library(
+    name = "MyAwesomeApp_lib",
+    srcs = ["src/MyAwesomeApp.m", "src/MyAwesomeApp.h"],
+    <strong>deps = ["@MOLXPCConnection//:MOLXPCConnection"],</strong>
+)
+</pre>
+
 
 ## Example
 
