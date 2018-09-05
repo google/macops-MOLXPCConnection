@@ -162,7 +162,11 @@
 
   // TODO(any): Remove 1-2 releases after exportedInterface was marked deprecated.
   if (!interface) {
+    // Silence warning about using exportedInterface temporarily until this is removed.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     interface = self.exportedInterface;
+#pragma clang diagnostic pop
   }
 
   if (!interface) return NO;
