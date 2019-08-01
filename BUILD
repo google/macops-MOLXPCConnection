@@ -1,5 +1,4 @@
 load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
-load("@build_bazel_rules_apple//apple:macos.bzl", "macos_application")
 
 objc_library(
     name = "MOLXPCConnection",
