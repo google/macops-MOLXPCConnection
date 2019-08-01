@@ -10,4 +10,5 @@ Pod::Spec.new do |s|
                      :tag => "v#{s.version}" }
   s.source_files = 'Source/MOLXPCConnection/*.{h,m}'
   s.dependency 'MOLCodesignChecker', '~> 2.2'
+  s.compiler_flags = '-Wunguarded-availability'
 end
