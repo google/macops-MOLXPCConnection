@@ -25,7 +25,29 @@
 @protocol DummyXPCProtocol
 @end
 
+@protocol DeepThoughtProtocol
+- (void)theAnswerToLifeTheUniverseAndEverything:(void(^)(int))reply;
+@end
+
+@interface DeepThought : NSObject<DeepThoughtProtocol>
+@end
+
+@implementation DeepThought
+- (void)theAnswerToLifeTheUniverseAndEverything:(void(^)(int))reply {
+  reply(42);
+}
+@end
+
 @implementation MOLXPCConnectionTest
+
+- (NSXPCInterface *)deepThoughtInterface {
+  static NSXPCInterface *interface;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    interface = [NSXPCInterface interfaceWithProtocol:@protocol(DeepThoughtProtocol)];
+  });
+  return interface;
+}
 
 - (void)testPlainInit {
   XCTAssertThrows([[MOLXPCConnection alloc] init]);
@@ -125,6 +147,23 @@
   sutServer = nil;
   
   [self waitForExpectationsWithTimeout:1.0 handler:NULL];
+}
+
+- (void)testSynchronous {
+  NSXPCListener *listener = [NSXPCListener anonymousListener];
+  MOLXPCConnection *sutServer = [[MOLXPCConnection alloc] initServerWithListener:listener];
+  sutServer.unprivilegedInterface = [self deepThoughtInterface];
+  sutServer.exportedObject = [[DeepThought alloc] init];
+  [sutServer resume];
+
+   __block int answer = 0;
+  MOLXPCConnection *sutClient = [[MOLXPCConnection alloc] initClientWithListener:listener.endpoint];
+  sutClient.remoteInterface = [self deepThoughtInterface];
+  [sutClient resume];
+  [[sutClient synchronousRemoteObjectProxy] theAnswerToLifeTheUniverseAndEverything:^(int reply) {
+    answer = reply;
+  }];
+  XCTAssertEqual(answer, 42);
 }
 
 @end
