@@ -1,22 +1,25 @@
 load("@build_bazel_rules_apple//apple:macos.bzl", "macos_unit_test")
+load("@build_bazel_rules_apple//apple:macos.bzl", "macos_application")
 
 objc_library(
     name = "MOLXPCConnection",
     srcs = ["Source/MOLXPCConnection/MOLXPCConnection.m"],
     hdrs = ["Source/MOLXPCConnection/MOLXPCConnection.h"],
+    copts = ["-Wunguarded-availability"],
     includes = ["Source"],
     sdk_frameworks = ["Security"],
-    deps = ["@MOLCodesignChecker//:MOLCodesignChecker"],
     visibility = ["//visibility:public"],
+    deps = ["@MOLCodesignChecker"],
 )
 
 objc_library(
     name = "MOLXPCConnectionTestsLib",
     testonly = 1,
     srcs = ["Tests/MOLXPCConnectionTests.m"],
+    copts = ["-Wunguarded-availability"],
     deps = [
         ":MOLXPCConnection",
-        "@OCMock//:OCMock",
+        "@OCMock",
     ],
 )
 

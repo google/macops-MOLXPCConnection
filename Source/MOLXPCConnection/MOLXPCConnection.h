@@ -119,7 +119,7 @@
  @note If the connection to the server failed, this will be nil, so you can safely send messages
  and rely on the invalidationHandler for handling the failure.
  */
-@property(readonly, nonatomic, nullable) id synchronousRemoteObjectProxy;
+@property(readonly, nonatomic, nullable) id synchronousRemoteObjectProxy API_AVAILABLE(macos(10.11));
 
 /**
  The privileged interface this object exports. (server)
