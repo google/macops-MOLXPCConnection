@@ -22,6 +22,6 @@ objc_library(
 
 macos_unit_test(
     name = "MOLXPCConnectionTests",
-    minimum_os_version = "10.9",
+    minimum_os_version = "10.11",
     deps = [":MOLXPCConnectionTestsLib"],
 )
