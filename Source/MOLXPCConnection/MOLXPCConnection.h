@@ -114,6 +114,14 @@
 @property(readonly, nonatomic, nullable) id remoteObjectProxy;
 
 /**
+ A synchronous proxy to the object at the other end of the connection. (client)
+
+ @note If the connection to the server failed, this will be nil, so you can safely send messages
+ and rely on the invalidationHandler for handling the failure.
+ */
+@property(readonly, nonatomic, nullable) id synchronousRemoteObjectProxy;
+
+/**
  The privileged interface this object exports. (server)
  */
 @property(retain, nullable) NSXPCInterface *privilegedInterface;

@@ -214,6 +214,17 @@
   return nil;
 }
 
+
+- (id)synchronousRemoteObjectProxy {
+  if (self.currentConnection.remoteObjectInterface &&
+      self.currentConnection.remoteObjectInterface != self.validationInterface) {
+    return [self.currentConnection synchronousRemoteObjectProxyWithErrorHandler:^(NSError *error) {
+      [self.currentConnection invalidate];
+    }];
+  }
+  return nil;
+}
+
 #pragma mark Connection tear-down
 
 - (void)invalidate {
