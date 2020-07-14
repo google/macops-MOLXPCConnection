@@ -92,5 +92,5 @@ http://cocoadocs.org/docsets/MOLXPCConnection
 ## Contributing
 
 Patches to this library are very much welcome.
-Please see the [CONTRIBUTING](https://github.com/google/macops-molxpcconecction/blob/master/CONTRIBUTING.md) file.
+Please see the [CONTRIBUTING](https://github.com/google/macops-molxpcconnection/blob/master/CONTRIBUTING.md) file.
 
