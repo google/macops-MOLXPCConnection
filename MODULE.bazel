@@ -1,0 +1,21 @@
+module(name = "molxpcconnection", version = "2.1")
+
+bazel_dep(name = "apple_support", version = "1.15.1", repo_name = "build_bazel_apple_support")
+bazel_dep(name = "rules_apple", version = "3.5.0", repo_name = "build_bazel_rules_apple")
+
+bazel_dep(name = "molcertificate", version = "2.1", repo_name = "MOLCertificate")
+git_override(
+    module_name = "molcertificate",
+    remote = "https://github.com/google/macops-molcertificate.git",
+    commit = "34f0ccf68a34a07cc636ada89057c529f90bec3a",
+)
+
+bazel_dep(name = "molcodesignchecker", version = "3.0", repo_name = "MOLCodesignChecker")
+git_override(
+    module_name = "molcodesignchecker",
+    remote = "https://github.com/google/macops-molcodesignchecker.git",
+    commit = "5060bcc8baa90bae3b0ca705d14850328bbbec53",
+)
+
+non_module_deps = use_extension("//:non_module_deps.bzl", "non_module_deps")
+use_repo(non_module_deps, "OCMock")
